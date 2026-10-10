@@ -1,0 +1,22 @@
+schema: '2.0'
+stages:
+  prepararDatos:
+    cmd: python src/preparar_datos.py
+    deps:
+    - path: data/raw/conjunto_de_datos_hog_enti_2022.csv
+      hash: md5
+      md5: 2efa3603a2c1dd5b50034f02cfbba536
+      size: 30182997
+    - path: data/raw/conjunto_de_datos_viv_enti_2022.csv
+      hash: md5
+      md5: f9d2c08d9c1b80def3637cc8592ed89e
+      size: 13981435
+    - path: src/preparar_datos.py
+      hash: md5
+      md5: da2a6d4e0f0cc4c4049c4d7e90caab06
+      size: 7702
+    outs:
+    - path: data/processed/inegi_procesado.csv
+      hash: md5
+      md5: 5e6bca3e4a2ffd09e493a35a401093b5
+      size: 6819625

@@ -1,0 +1,10 @@
+stages:
+  prepararDatos:
+    desc: "Integra Hogar y Vivienda del INEGI (ENTI 2022), limpia y genera el dataset procesado para el análisis de trabajo infantil"
+    cmd: python src/preparar_datos.py
+    deps:
+      - src/preparar_datos.py
+      - data/raw/conjunto_de_datos_hog_enti_2022.csv
+      - data/raw/conjunto_de_datos_viv_enti_2022.csv
+    outs:
+      - data/processed/inegi_procesado.csv
