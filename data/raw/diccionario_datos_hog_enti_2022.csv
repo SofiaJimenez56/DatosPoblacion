@@ -1,0 +1,133 @@
+NOMBRE_CAMPO,LONGITUD,TIPO,NEMÓNICO,CATÁLOGO,RANGO_CLAVES 
+Estrato,2,C,est,est,"[10,20,30,40]"
+Estrato de diseño,3,C,est_d,,[001-999]
+Tamaño de localidad,1,C,t_loc,t_loc,[1-4]
+Entidad federativa,2,C,ent,ent,[01-32]
+Número de control,5,C,con,,[00001-99999]
+Unidad primaria de muestreo,7,C,upm,,[0000001-9999999]
+Número progresivo de la vivienda,4,C,n_pro_viv,,[0001-9999]
+Vivienda seleccionada,2,C,v_sel,v_sel,[00-99]
+Número de hogar,1,C,n_hog,n_hog,[1-9]
+Periodo ,3,C,per,per,"Primer dígito 1-4, segundo y tercer dígito año"
+Resultado preliminar de la entrevista ,2,C,r_pre,r_pre,"[01-15,20]"
+Resultado definitivo,2,C,r_def,r_def,"[01-15,20]"
+¿En este hogar se contrata trabajadores domésticos… ,1,C,p4_1,p4_1,[1-4]
+Número de trabajadores domésticos,2,C,p4_2,p4_2,[01-99]
+Resultado de la entrevista del cuestionario complementario ,2,C,r_def_ch,r_def_ch,"[00,03]"
+¿El hogar se vio afectado por sequía?,1,C,p1_1h,p1_1h,"[1-3,9]"
+¿El hogar se vio afectado por inundaciones o exceso de lluvia?,1,C,p1_2h,p1_2h,"[1-3,9]"
+¿El hogar se vio afectado por pérdida de cultivos por plagas?,1,C,p1_3h,p1_3h,"[1-3,9]"
+¿El hogar se vio afectado por pérdida de animales de corral por enfermedades?,1,C,p1_4h,p1_4h,"[1-3,9]"
+¿El hogar se vio afectado por disminución de precios en productos agrícolas?,1,C,p1_5h,p1_5h,"[1-3,9]"
+¿El hogar se vio afectado por precios elevados de los insumos agrícolas?,1,C,p1_6h,p1_6h,"[1-3,9]"
+¿El hogar se vio afectado por precios elevados de los productos alimenticios?,1,C,p1_7h,p1_7h,"[1-3,9]"
+¿El hogar se vio afectado por que dejó de recibir apoyos monetarios de otros hogares?,1,C,p1_8h,p1_8h,"[1-3,9]"
+¿El hogar se vio afectado por pérdidas de ingresos por negocios familiares?,1,C,p1_9h,p1_9h,"[1-3,9]"
+¿El hogar se vio afectado por quiebra de un negocio familiar?,1,C,p1_10h,p1_10h,"[1-3,9]"
+¿El hogar se vio afectado por pérdidas de ingresos por un trabajo remunerado?,1,C,p1_11h,p1_11h,"[1-3,9]"
+¿El hogar se vio afectado por enfermedad grave o accidente de un miembro del hogar?,1,C,p1_12h,p1_12h,"[1-3,9]"
+¿El hogar se vio afectado pro fallecimiento de algún miembro del hogar que aportaba ingresos?,1,C,p1_13h,p1_13h,"[1-3,9]"
+¿El hogar se vio afectado por fallecimiento de otro miembro del hogar?,1,C,p1_14h,p1_14h,"[1-3,9]"
+"¿El hogar se vio afectado por divorcio, separación?",1,C,p1_15h,p1_15h,"[1-3,9]"
+¿El hogar se vio afectado por inseguridad delictiva o violencia?,1,C,p1_16h,p1_16h,"[1-3,9]"
+¿Qué tan grave fue para el hogar la sequía?,1,C,p2_1h,p2_1h,[1-4]
+¿Qué tan grave fue para el hogar las inundaciones o exceso de lluvias?,1,C,p2_2h,p2_2h,[1-4]
+¿Qué tan grave fue para el hogar la pérdida de cultivos por plagas?,1,C,p2_3h,p2_3h,[1-4]
+¿Qué tan grave fue para el hogar la pérdidad de animales de corral por enfermedades?,1,C,p2_4h,p2_4h,[1-4]
+¿Qué tan grave fue para el hogar la disminución de precios en los productos agrícolas?,1,C,p2_5h,p2_5h,[1-4]
+¿Qué tan grave fue para el hogar los precios elevados de los insumos agrícolas?,1,C,p2_6h,p2_6h,[1-4]
+¿Qué tan grave fue para el hogar los precios elevados de los productos alimenticios?,1,C,p2_7h,p2_7h,[1-4]
+¿Qué tan grave fue para el hogar el dejar de recibir apoyos monetarios de otros hogares?,1,C,p2_8h,p2_8h,[1-4]
+¿Qué tan grave fue para el hogar la pérdida de ingresos por negocios familiares?,1,C,p2_9h,p2_9h,[1-4]
+¿Qué tan grave fue para el hogar la quiebra de un negocio familiar?,1,C,p2_10h,p2_10h,[1-4]
+¿Qué tan grave fue para el hogar la pérdida de ingresos por tabajo remunerado?,1,C,p2_11h,p2_11h,[1-4]
+¿Qué tan grave fue para el hogar la enfermedad o accidente de un miembro del hogar?,1,C,p2_12h,p2_12h,[1-4]
+¿Qué tan grave fue para el hogar el fallecimiento de algún miembro del hogar?,1,C,p2_13h,p2_13h,[1-4]
+¿Qué tan grave fue para el hogar el fallecimiento de otro miembro del hogar?,1,C,p2_14h,p2_14h,[1-4]
+"¿Qué tan grave fue para el hogar el divorcio, separación?",1,C,p2_15h,p2_15h,[1-4]
+¿Qué tan grave fue para el hogar la inseguridad delictiva o violencia?,1,C,p2_16h,p2_16h,[1-4]
+Algún integrante del hogar recibió pensión de jubilación,1,C,p3_h,p3_h,"[1,2,9]"
+Número de renglón de la persona que recibió pensión de jubilación,2,C,p3_1h,p3_1h,[01-30]
+Número de renglón de la persona que recibió pensión de jubilación,2,C,p3_2h,p3_2h,[01-30]
+Número de renglón de la persona que recibió pensión de jubilación,2,C,p3_3h,p3_3h,[01-30]
+Número de renglón de la persona que recibió pensión de jubilación,2,C,p3_4h,p3_4h,[01-30]
+Número de renglón de la persona que recibió pensión de jubilación,2,C,p3_5h,p3_5h,[01-30]
+Algún integrante del hogar recibió pensión por viudez,1,C,p4_h,p4_h,"[1,2,9]"
+Número de renglón de la persona que recibió pensión por viudez,2,C,p4_1h,p4_1h,[01-30]
+Número de renglón de la persona que recibió pensión por viudez,2,C,p4_2h,p4_2h,[01-30]
+Número de renglón de la persona que recibió pensión por viudez,2,C,p4_3h,p4_3h,[01-30]
+Número de renglón de la persona que recibió pensión por viudez,2,C,p4_4h,p4_4h,[01-30]
+Número de renglón de la persona que recibió pensión por viudez,2,C,p4_5h,p4_5h,[01-30]
+"Agún integrante del hogar recibió apoyo para el bienestar de las niñas y niños, hijos de madres trabajadoras?",1,C,p5_h,p5_h,"[1,2,9]"
+"Númeo de renglón de la persona que recibió el apoyo para el bienestar de las niñas y niños, hijos de madres trabajadoras",2,C,p5_1h,p5_1h,[01-30]
+"Númeo de renglón de la persona que recibió el apoyo para el bienestar de las niñas y niños, hijos de madres trabajadoras",2,C,p5_2h,p5_2h,[01-30]
+"Númeo de renglón de la persona que recibió el apoyo para el bienestar de las niñas y niños, hijos de madres trabajadoras",2,C,p5_3h,p5_3h,[01-30]
+"Númeo de renglón de la persona que recibió el apoyo para el bienestar de las niñas y niños, hijos de madres trabajadoras",2,C,p5_4h,p5_4h,[01-30]
+"Númeo de renglón de la persona que recibió el apoyo para el bienestar de las niñas y niños, hijos de madres trabajadoras",2,C,p5_5h,p5_5h,[01-30]
+¿Algún integrante del hogar recibió beca Benito Juárez? ,1,C,p6_h,p6_h,"[1,2,9]"
+Número de renglón de la persona que recibió beca Benito Juárez,2,C,p6_1h,p6_1h,[01-30]
+Número de renglón de la persona que recibió beca Benito Juárez,2,C,p6_2h,p6_2h,[01-30]
+Número de renglón de la persona que recibió beca Benito Juárez,2,C,p6_3h,p6_3h,[01-30]
+Número de renglón de la persona que recibió beca Benito Juárez,2,C,p6_4h,p6_4h,[01-30]
+Número de renglón de la persona que recibió beca Benito Juárez,2,C,p6_5h,p6_5h,[01-30]
+¿Algún integrante recibió del gobierno apoyo de jovenes construyendo el futuro?,1,C,p7_h,p7_h,"[1,2,9]"
+Número de renglón de la persona que recibió el apoyo jovenes construyendo el futuro,2,C,p7_1h,p7_1h,[01-30]
+Número de renglón de la persona que recibió el apoyo jovenes construyendo el futuro,2,C,p7_2h,p7_2h,[01-30]
+Número de renglón de la persona que recibió el apoyo jovenes construyendo el futuro,2,C,p7_3h,p7_3h,[01-30]
+Número de renglón de la persona que recibió el apoyo jovenes construyendo el futuro,2,C,p7_4h,p7_4h,[01-30]
+Número de renglón de la persona que recibió el apoyo jovenes construyendo el futuro,2,C,p7_5h,p7_5h,[01-30]
+¿Algún integrante recibió del gobierno pensión para el bienestar de las personas con discapacidad?,1,C,p8_h,p8_h,"[1,2,9]"
+Número de renglón de la persona que recibió pensión para el bienestar de las personas con discapacidad,2,C,p8_1h,p8_1h,[01-30]
+Número de renglón de la persona que recibió pensión para el bienestar de las personas con discapacidad,2,C,p8_2h,p8_2h,[01-30]
+Número de renglón de la persona que recibió pensión para el bienestar de las personas con discapacidad,2,C,p8_3h,p8_3h,[01-30]
+Número de renglón de la persona que recibió pensión para el bienestar de las personas con discapacidad,2,C,p8_4h,p8_4h,[01-30]
+Número de renglón de la persona que recibió pensión para el bienestar de las personas con discapacidad,2,C,p8_5h,p8_5h,[01-30]
+¿Algún integrante del hogar recibió del gobierno pensión para el bienestra de las personas adultas mayores?,1,C,p9_h,p9_h,"[1,2,9]"
+Número de renglon de la persona que recibió del gobierno pensión para el bienestar de las personas adultas mayores,2,C,p9_1h,p9_1h,[01-30]
+Número de renglon de la persona que recibió del gobierno pensión para el bienestar de las personas adultas mayores,2,C,p9_2h,p9_2h,[01-30]
+Número de renglon de la persona que recibió del gobierno pensión para el bienestar de las personas adultas mayores,2,C,p9_3h,p9_3h,[01-30]
+Número de renglon de la persona que recibió del gobierno pensión para el bienestar de las personas adultas mayores,2,C,p9_4h,p9_4h,[01-30]
+Número de renglon de la persona que recibió del gobierno pensión para el bienestar de las personas adultas mayores,2,C,p9_5h,p9_5h,[01-30]
+¿Algún integrante del hogar recibió del gobierno otro programa social?,1,C,p10_h,p10_h,"[1,2,9]"
+Número de renglón de la persona que recibió del gobierno otro programa social.,2,C,p10_1h,p10_1h,[01-30]
+Número de renglón de la persona que recibió del gobierno otro programa social.,2,C,p10_2h,p10_2h,[01-30]
+Número de renglón de la persona que recibió del gobierno otro programa social.,2,C,p10_3h,p10_3h,[01-30]
+Número de renglón de la persona que recibió del gobierno otro programa social.,2,C,p10_4h,p10_4h,[01-30]
+Número de renglón de la persona que recibió del gobierno otro programa social.,2,C,p10_5h,p10_5h,[01-30]
+Informante,2,C,inf,inf,"[01-30,97,99]"
+Total de hogares,1,C,t_hog,t_hog,[1-5]
+Resultado definitivo de la entrevista ENTI,2,C,r_def_enti,r_def_enti,"[01-15,20]"
+Clase de hogar,1,N,clase_hog,clase_hog,[1-4]
+Tamaño del hogar ,1,N,tam_hog,tam_hog,[1-4]
+Escolaridad del jefe,1,N,escol_jefe,escol_jefe,[1-6]
+Ocupación jefe,1,N,ocu_jefe,ocu_jefe,"[1,2]"
+Hogar monoparental,1,N,h_mon,h_mon,"[0,1]"
+Sexo del jefe,1,N,sex_jef,sex_jef,"[1,2]"
+Condición de actividad del jefe,1,N,clase2_jef,clase2_jef,[1-4]
+Total de residentes en el hogar,2,N,p_tot,p_tot,[01-99]
+Total de ocupados de 5 a 17 años,1,N,tocup,tocup,[1-9]
+Total de menores en ocupación no permitida,1,N,tonp,tonp,[1-9]
+Total de menores que realizan quehaceres domésticos en condiciones no adecuadas,1,N,tqdna,tqdna,[1-9]
+Total de residentes en condiciones de trabajo infantil,1,N,tcti,tcti,[1-9]
+Identifica si hay jefe del hogar,1,N,par1,par1,"[0,1]"
+Identifica si hay conyuge,1,N,par2,par2,"[0,1]"
+Identifica si hay al menos un hijo,1,N,par3,par3,"[0,1]"
+Identifica si hay otro tipo de parientes en el hogar,1,N,par4,par4,"[0,1]"
+Identifica si hay otros no parientes del jefe del hogar,1,N,par5,par5,"[0,1]"
+Identifica si hay trabajadores domésticos ,1,N,par6,par6,"[0,1]"
+Identifica si hay huéspedes en el hogar ,1,N,par7,par7,"[0,1]"
+Identifica si hay parentescos no identificados en el hogar,1,N,par9,par9,"[0,1]"
+Población total de 5 a 17 años,1,N,con5a17,con5a17,[1-9]
+Grado aprobado del jefe del hogar,2,N,cs_p13_1,cs_p13_1,"[01-09,99]"
+Años aprobados del jefe del hogar,1,N,cs_p13_2,cs_p13_2,[1-9]
+¿Qué estudios le pidieron a... para ingresar a esta carrera? ,1,N,cs_p15,cs_p15,"[1-3,9]"
+Número de renglón del jefe del hogar,2,C,n_ren,n_ren,[01-30]
+Problemas climáticos,1,N,pro_cli,pro_cli,"[0,1]"
+Problemas en su negocio o actividad,1,N,pro_neg,pro_neg,"[0,1]"
+Pérdida de ingresos por trabajo,1,N,per_ing,per_ing,"[0,1]"
+Pérdida de ingresos de otros hogares,1,N,per_ing_ot,per_ing_ot,"[0,1]"
+Problemas personales,1,N,pro_per,pro_per,"[0,1]"
+Inseguridad delictiva o violencia ,1,N,ins_del_vi,ins_del_vi,"[0,1]"
+Número de la unidad primaria de muestreo de distribucion,7,C,upm_dis,,[0000001-9999999]
+Ponderador,6,N,fac,,[000001-999999]
+Ámbito,1,C,ur2,ur2,

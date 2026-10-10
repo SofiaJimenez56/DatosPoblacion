@@ -1,0 +1,55 @@
+NOMBRE_CAMPO,LONGITUD,TIPO,NEM?¶NICO,CATÁLOGO,RANGO_CLAVES                                                              
+Estrato nacional y estatal,2,C,est,est,"[10,20,30,40]"
+Número del estrato de diseño,3,C,est_d,,[001-999]
+Tamaño de localidad,1,C,t_loc,t_loc,[1-4]
+Entidad,2,C,ent,ent,[01-32]
+Control,5,C,con,,[00001-99999]
+Unidad primaria de muestreo,7,C,upm,,[0000001-9999999]
+Número progresivo de la vivienda,4,C,n_pro_viv,,[0001-9999]
+Vivienda seleccionada,2,C,v_sel,v_sel,[00-99]
+Periodo,3,C,per,per,"Primer dígito 1-4, segundo y tercer dígito año"
+¿Cuántas personas viven normalmente en esta vivienda contando a los niños chiquitos y a los ancianos?,2,C,p1,p1,[01-99]
+¿Todas estas personas comparten un mismo gasto para comer?,1,C,p2,p2,[1-2]
+¿Cuántos hogares o grupos de personas tienen gastos separados para comer contando el de usted?,2,C,p3,p3,[02-09]
+¿De qué material es la mayor parte del piso de esta vivienda?,1,C,p21,p21,"[1-3,9]"
+¿Cuántos cuartos se usan para dormir sin contar pasillos?,2,C,p22,p22,[00-99]
+¿Cuántos cuartos tiene en total esta vivienda contando la cocina?,2,C,p23,p23,[00-99]
+¿Hay luz eléctrica en esta vivienda?,1,C,p24,p24,"[1,2,9]"
+¿El agua la obtienen de llaves o mangueras que están:,1,C,p25,p25,"[1-3,9]"
+¿El agua que usan en su vivienda proviene:,1,C,p26,p26,"[1-7,9]"
+"Entonces, ¿acarrean el agua de:",1,C,p27,p27,"[1-6,9]"
+¿en esta vivienda tienen:,1,C,p28,p28,"[1-4,9]"
+¿Tienen taza de baño ...,1,C,p29,p29,"[1-3,9]"
+¿La taza de baño (letrina) tiene ...,1,C,p30,p30,"[1-3,9]"
+¿Está vivienda tiene drenaje o desag??e conectado a:,1,C,p31,p31,"[1-5,9]"
+¿En esta vivienda tienen refrigerador?,1,C,p32_1,p32_1,"[1,2,9]"
+¿En esta vivienda tienen lavadora?,1,C,p32_2,p32_2,"[1,2,9]"
+¿En esta vivienda tienen horno de microondas?,1,C,p32_3,p32_3,"[1,2,9]"
+¿En esta vivienda tienen automóvil o camioneta?,1,C,p32_4,p32_4,"[1,2,9]"
+¿En esta vivienda tienen motocicleta o motoneta?,1,C,p32_5,p32_5,"[1,2,9]"
+¿En esta vivienda tienen bicicleta que se utilice como medio de transporte?,1,C,p32_6,p32_6,"[1,2,9]"
+¿En esta vivienda tienen algún aparato o dispositivo para o?ír radio?,1,C,p32_7,p32_7,"[1,2,9]"
+¿En esta vivienda tienen televisor?,1,C,p32_8,p32_8,"[1,2,9]"
+"¿En esta vivienda tienen computadora laptop o tablet?""",1,C,p32_9,p32_9,"[1,2,9]"
+¿En esta vivienda tienen línea telefónica fija?,1,C,p32_10,p32_10,"[1,2,9]"
+¿En esta vivienda tienen teléfono celular?,1,C,p32_11,p32_11,"[1,2,9]"
+¿En esta vivienda tienen internet?,1,C,p32_12,p32_12,"[1,2,9]"
+¿En esta vivienda tienen servicio o televisi??n de paga?,1,C,p32_13,p32_13,"[1,2,9]"
+"¿En esta vivienda tienen servicio de películas música o videos de paga por internet?""",1,C,p32_14,p32_14,"[1,2,9]"
+¿En esta vivienda tienen consola de videojuegos?,1,C,p32_15,p32_15,"[1,2,9]"
+Vivienda con población infantil de 5 a 17 años,2,N,vcpi,vcpi,[01-99]
+Vivienda con población infantil de 5 a 17 años ocupados ,2,N,vcti,vcti,[01-99]
+Vivienda con población infantil de 5 a 17 años en ocupaciones no permitidas,2,N,vconp,vconp,[01-99]
+Vivienda con población infantil de 5 a 17 años que realiza quehaceres domésticos en condiciones no adecuadas,2,N,vcqdecna,vcqdecna,[01-99]
+Total de hogares en la vivienda,1,N,tot_hog,tot_hog,[1-5]
+Población total en vivienda,2,N,pobviv,pobviv,[01-99]
+Total de hogares con poblaci??n de 5 a 17 a??os,1,N,thog5a17,thog5a17,[1-5]
+Población total en hogares con menores de 5 a 17,2,N,pthog5a17,pthog5a17,[01-99]
+Aparatos electrodomésticos,1,N,a_elec,a_elec,"[1,2]"
+Medio de transporte,1,N,m_tran,m_tran,"[1,2]"
+Televisor o radio,1,N,tel_rad,tel_rad,"[1,2]"
+"Computadora, laptop o tablet y/o internet",1,N,e_movil,e_movil,"[1,2]"
+Línea telefónica,1,N,l_tel,l_tel,"[1,2]"
+Servicio de entretenimiento,1,N,s_ent,s_ent,"[1,2]"
+Número de la unidad primaria de muestreo,7,C,upm_dis,,[0000001-9999999]
+Ponderador de vivienda,6,N,fac,,[000001-999999]
