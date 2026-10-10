@@ -1,196 +1,108 @@
-# Diagrama del pipeline de preparación de datos
+# Diagrama del pipeline `prepararDatos`
 
-El siguiente diagrama representa el flujo del pipeline `prepararDatos` implementado con DVC. Muestra los archivos de entrada, el script de transformación y el archivo procesado de salida.
+Este diagrama representa el flujo del pipeline reproducible implementado con **DVC** para la preparación de datos de la ENTI 2022 del INEGI.
 
 ```mermaid
 flowchart LR
-    subgraph RAW[" Datos crudos (INEGI ENTI 2022)"]
-        A[data/raw/conjunto_de_datos_hog_enti_2022.csv]
-        B[data/raw/conjunto_de_datos_viv_enti_2022.csv]
+    subgraph RAW["📥 Datos crudos · INEGI ENTI 2022"]
+        A["data/raw/<br/>conjunto_de_datos_hog_enti_2022.csv<br/><i>65,862 hogares × 132 cols</i>"]
+        B["data/raw/<br/>conjunto_de_datos_viv_enti_2022.csv<br/><i>64,803 viviendas × 54 cols</i>"]
     end
 
-    subgraph SRC["⚙️ Proceso de transformación"]
-        C[src/preparar_datos.py]
-        C1[Merge por llaves: ent, con, upm, n_pro_viv, v_sel, per]
-        C2[Selección de columnas relevantes]
-        C3[Renombrado a nombres descriptivos]
-        C4[Conversión de tipos]
-        C5[Tratamiento de códigos especiales INEGI]
-        C6[Eliminación de viviendas incompletas]
-        C7[Creación de variable binaria<br/>tiene_trabajo_infantil]
-        C --> C1 --> C2 --> C3 --> C4 --> C5 --> C6 --> C7
+    subgraph SRC["⚙️ src/preparar_datos.py"]
+        direction TB
+        C1["1. Merge por llaves<br/><code>ent · con · upm · n_pro_viv · v_sel · per</code>"]
+        C2["2. Selección de 33 columnas relevantes"]
+        C3["3. Renombrado a nombres descriptivos"]
+        C4["4. Conversión de tipos<br/><i>str → int64 / float64</i>"]
+        C5["5. Tratamiento de códigos especiales<br/><i>9 = No especificado → NaN</i>"]
+        C6["6. Eliminación de viviendas incompletas<br/><i>7,618 hogares sin cuestionario</i>"]
+        C7["7. Imputación de <code>origen_agua</code><br/><i>-1 = No aplica</i>"]
+        C8["8. Variable objetivo binaria<br/><code>tiene_trabajo_infantil</code>"]
+        C9["9. Mapeo de entidad a nombre"]
+
+        C1 --> C2 --> C3 --> C4 --> C5 --> C6 --> C7 --> C8 --> C9
     end
 
     subgraph OUT["📤 Salida procesada"]
-        D[data/processed/inegi_procesado.csv<br/>58,244 hogares × 35 columnas]
+        D["data/processed/inegi_procesado.csv<br/><b>58,244 hogares × 35 columnas</b>"]
     end
 
-    A --> C
-    B --> C
-    C7 --> D
+    A --> C1
+    B --> C1
+    C9 --> D
 
-    style A fill:#ffe4b5
-    style B fill:#ffe4b5
-    style C fill:#cce5ff
-    style D fill:#d4edda
+    style RAW fill:#fff3cd,stroke:#b8860b,stroke-width:2px
+    style SRC fill:#cfe2ff,stroke:#0d6efd,stroke-width:2px
+    style OUT fill:#d1e7dd,stroke:#198754,stroke-width:2px
+    style A fill:#ffe9b0
+    style B fill:#ffe9b0
+    style D fill:#b7e4c7
 ```
 
-## Descripción del flujo
+---
 
-| Etapa | Descripción |
-|---|---|
-| **Entrada** | Dos archivos CSV crudos del INEGI: base de Hogar (65,862 filas × 132 cols) y base de Vivienda (64,803 filas × 54 cols) |
-| **Merge** | Integración por las llaves compartidas: `ent`, `con`, `upm`, `n_pro_viv`, `v_sel`, `per` |
-| **Selección** | Filtrado a 33 columnas relevantes para el análisis de trabajo infantil |
-| **Renombrado** | Conversión de nemónicos (`tcti`, `p21`, etc.) a nombres descriptivos (`trabajo_infantil_total`, `material_piso`) |
-| **Tipos** | Conversión de variables numéricas de `str` a `int64`/`float64` |
-| **Códigos especiales** | Reemplazo del código `9` (No especificado del INEGI) por `NaN` |
-| **Eliminación** | Remoción de 7,618 hogares sin datos completos de vivienda |
-| **Variable objetivo** | Creación de `tiene_trabajo_infantil` (binaria: 0 o 1) |
-| **Salida** | Archivo procesado con 58,244 hogares y 35 columnas, listo para el análisis |
+## Descripción de las etapas
 
-## Reproducibilidad
+| # | Etapa | Entrada | Salida | Descripción |
+|---|-------|---------|--------|-------------|
+| 1 | **Carga** | 2 CSV crudos | DataFrames | Lectura con `dtype=str` y `encoding='utf-8'` |
+| 2 | **Merge** | Hogar + Vivienda | 65,862 × 180 | Unión por 6 llaves comunes |
+| 3 | **Selección** | 180 columnas | 33 columnas | Filtro a variables relevantes |
+| 4 | **Renombrado** | Nemónicos | Nombres legibles | `tcti` → `trabajo_infantil_total` |
+| 5 | **Tipos** | `str` | `int64`/`float64` | Conversión numérica |
+| 6 | **Códigos especiales** | `9` | `NaN` | El código 9 = "No especificado" del INEGI |
+| 7 | **Eliminación** | 65,862 filas | 58,244 filas | 7,618 hogares sin cuestionario de vivienda |
+| 8 | **Imputación** | `origen_agua` con NaN | `-1` | Variable condicional (no aplica sin agua entubada) |
+| 9 | **Variable objetivo** | `trabajo_infantil_total` | `tiene_trabajo_infantil` | Binaria: 1 si > 0 |
+| 10 | **Geografía** | `entidad` (código) | `entidad_nombre` | Mapeo a nombre del estado |
 
-El pipeline se reproduce con:
+---
+
+## Reproducir el pipeline
+
+Desde la raíz del proyecto:
 
 ```bash
 dvc repro
 ```
 
-DVC verifica los hashes de las dependencias (`src/preparar_datos.py` y los dos CSV crudos). Si alguno cambió, vuelve a ejecutar la etapa. Si nada cambió, omite la ejecución.
+**Comportamiento:**
+- **Primera ejecución:** corre `python src/preparar_datos.py` y regenera `data/processed/inegi_procesado.csv`.
+- **Ejecuciones posteriores:** DVC calcula hashes de las dependencias. Si nada cambió, omite la etapa. Si algún archivo de `deps` cambió (por ejemplo, editaste el script), re-ejecuta automáticamente.
 
-## Herramientas utilizadas
-
-- **Git** — Control de versiones del código y la documentación.
-- **DVC** — Versionado de datos y pipeline reproducible.
-- **Python + pandas** — Procesamiento y transformación de datos.# Diagrama del pipeline de preparación de datos
-
-El siguiente diagrama representa el flujo del pipeline `prepararDatos` implementado con DVC. Muestra los archivos de entrada, el script de transformación y el archivo procesado de salida.
-
-```mermaid
-flowchart LR
-    subgraph RAW["📥 Datos crudos (INEGI ENTI 2022)"]
-        A[data/raw/conjunto_de_datos_hog_enti_2022.csv]
-        B[data/raw/conjunto_de_datos_viv_enti_2022.csv]
-    end
-
-    subgraph SRC["⚙️ Proceso de transformación"]
-        C[src/preparar_datos.py]
-        C1[Merge por llaves: ent, con, upm, n_pro_viv, v_sel, per]
-        C2[Selección de columnas relevantes]
-        C3[Renombrado a nombres descriptivos]
-        C4[Conversión de tipos]
-        C5[Tratamiento de códigos especiales INEGI]
-        C6[Eliminación de viviendas incompletas]
-        C7[Creación de variable binaria<br/>tiene_trabajo_infantil]
-        C --> C1 --> C2 --> C3 --> C4 --> C5 --> C6 --> C7
-    end
-
-    subgraph OUT["📤 Salida procesada"]
-        D[data/processed/inegi_procesado.csv<br/>58,244 hogares × 35 columnas]
-    end
-
-    A --> C
-    B --> C
-    C7 --> D
-
-    style A fill:#ffe4b5
-    style B fill:#ffe4b5
-    style C fill:#cce5ff
-    style D fill:#d4edda
-```
-
-## Descripción del flujo
-
-| Etapa | Descripción |
-|---|---|
-| **Entrada** | Dos archivos CSV crudos del INEGI: base de Hogar (65,862 filas × 132 cols) y base de Vivienda (64,803 filas × 54 cols) |
-| **Merge** | Integración por las llaves compartidas: `ent`, `con`, `upm`, `n_pro_viv`, `v_sel`, `per` |
-| **Selección** | Filtrado a 33 columnas relevantes para el análisis de trabajo infantil |
-| **Renombrado** | Conversión de nemónicos (`tcti`, `p21`, etc.) a nombres descriptivos (`trabajo_infantil_total`, `material_piso`) |
-| **Tipos** | Conversión de variables numéricas de `str` a `int64`/`float64` |
-| **Códigos especiales** | Reemplazo del código `9` (No especificado del INEGI) por `NaN` |
-| **Eliminación** | Remoción de 7,618 hogares sin datos completos de vivienda |
-| **Variable objetivo** | Creación de `tiene_trabajo_infantil` (binaria: 0 o 1) |
-| **Salida** | Archivo procesado con 58,244 hogares y 35 columnas, listo para el análisis |
-
-## Reproducibilidad
-
-El pipeline se reproduce con:
+**Forzar re-ejecución completa:**
 
 ```bash
-dvc repro
+dvc repro -f
 ```
 
-DVC verifica los hashes de las dependencias (`src/preparar_datos.py` y los dos CSV crudos). Si alguno cambió, vuelve a ejecutar la etapa. Si nada cambió, omite la ejecución.
+---
+
+## Esquema del pipeline en formato tabla
+
+| Entrada | Proceso | Salida |
+|---------|---------|--------|
+| `data/raw/hog_enti_2022.csv` | Merge por llaves | `data/processed/inegi_procesado.csv` |
+| `data/raw/viv_enti_2022.csv` | Limpieza y transformaciones | |
+| `src/preparar_datos.py` | | |
+
+---
 
 ## Herramientas utilizadas
 
-- **Git** — Control de versiones del código y la documentación.
-- **DVC** — Versionado de datos y pipeline reproducible.
-- **Python + pandas** — Procesamiento y transformación de datos.# Diagrama del pipeline de preparación de datos
+| Herramienta | Rol |
+|-------------|-----|
+| **Git** | Control de versiones del código, la documentación y el pipeline |
+| **DVC** | Versionado de datos grandes y pipeline reproducible |
+| **Python 3** | Lenguaje de procesamiento |
+| **pandas** | Manipulación de DataFrames |
 
-El siguiente diagrama representa el flujo del pipeline `prepararDatos` implementado con DVC. Muestra los archivos de entrada, el script de transformación y el archivo procesado de salida.
+---
 
-```mermaid
-flowchart LR
-    subgraph RAW["📥 Datos crudos (INEGI ENTI 2022)"]
-        A[data/raw/conjunto_de_datos_hog_enti_2022.csv]
-        B[data/raw/conjunto_de_datos_viv_enti_2022.csv]
-    end
+## Ver también
 
-    subgraph SRC["⚙️ Proceso de transformación"]
-        C[src/preparar_datos.py]
-        C1[Merge por llaves: ent, con, upm, n_pro_viv, v_sel, per]
-        C2[Selección de columnas relevantes]
-        C3[Renombrado a nombres descriptivos]
-        C4[Conversión de tipos]
-        C5[Tratamiento de códigos especiales INEGI]
-        C6[Eliminación de viviendas incompletas]
-        C7[Creación de variable binaria<br/>tiene_trabajo_infantil]
-        C --> C1 --> C2 --> C3 --> C4 --> C5 --> C6 --> C7
-    end
-
-    subgraph OUT["📤 Salida procesada"]
-        D[data/processed/inegi_procesado.csv<br/>58,244 hogares × 35 columnas]
-    end
-
-    A --> C
-    B --> C
-    C7 --> D
-
-    style A fill:#ffe4b5
-    style B fill:#ffe4b5
-    style C fill:#cce5ff
-    style D fill:#d4edda
-```
-
-## Descripción del flujo
-
-| Etapa | Descripción |
-|---|---|
-| **Entrada** | Dos archivos CSV crudos del INEGI: base de Hogar (65,862 filas × 132 cols) y base de Vivienda (64,803 filas × 54 cols) |
-| **Merge** | Integración por las llaves compartidas: `ent`, `con`, `upm`, `n_pro_viv`, `v_sel`, `per` |
-| **Selección** | Filtrado a 33 columnas relevantes para el análisis de trabajo infantil |
-| **Renombrado** | Conversión de nemónicos (`tcti`, `p21`, etc.) a nombres descriptivos (`trabajo_infantil_total`, `material_piso`) |
-| **Tipos** | Conversión de variables numéricas de `str` a `int64`/`float64` |
-| **Códigos especiales** | Reemplazo del código `9` (No especificado del INEGI) por `NaN` |
-| **Eliminación** | Remoción de 7,618 hogares sin datos completos de vivienda |
-| **Variable objetivo** | Creación de `tiene_trabajo_infantil` (binaria: 0 o 1) |
-| **Salida** | Archivo procesado con 58,244 hogares y 35 columnas, listo para el análisis |
-
-## Reproducibilidad
-
-El pipeline se reproduce con:
-
-```bash
-dvc repro
-```
-
-DVC verifica los hashes de las dependencias (`src/preparar_datos.py` y los dos CSV crudos). Si alguno cambió, vuelve a ejecutar la etapa. Si nada cambió, omite la ejecución.
-
-## Herramientas utilizadas
-
-- **Git** — Control de versiones del código y la documentación.
-- **DVC** — Versionado de datos y pipeline reproducible.
-- **Python + pandas** — Procesamiento y transformación de datos.
+- `src/preparar_datos.py` — código del pipeline
+- `dvc.yaml` — definición del stage DVC
+- `reports/notebook_prepararDatos.ipynb` — documentación detallada del proceso
+- `README.md` — descripción general del proyecto

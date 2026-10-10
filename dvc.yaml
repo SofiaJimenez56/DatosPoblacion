@@ -1,6 +1,10 @@
 stages:
   prepararDatos:
-    desc: "Integra Hogar y Vivienda del INEGI (ENTI 2022), limpia y genera el dataset procesado para el análisis de trabajo infantil"
+    desc: >
+      Integra las bases de Hogar y Vivienda del INEGI (ENTI 2022),
+      limpia los datos, trata códigos especiales y valores faltantes,
+      y genera el dataset procesado con la variable binaria
+      tiene_trabajo_infantil para el análisis de trabajo infantil.
     cmd: python src/preparar_datos.py
     deps:
       - src/preparar_datos.py
