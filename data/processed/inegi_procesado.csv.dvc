@@ -1,0 +1,5 @@
+outs:
+- md5: 8950472115b153844bb13f4c0291857e
+  size: 6973739
+  hash: md5
+  path: inegi_procesado.csv
