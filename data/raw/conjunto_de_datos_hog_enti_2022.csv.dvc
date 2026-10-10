@@ -1,0 +1,5 @@
+outs:
+- md5: 2efa3603a2c1dd5b50034f02cfbba536
+  size: 30182997
+  hash: md5
+  path: conjunto_de_datos_hog_enti_2022.csv

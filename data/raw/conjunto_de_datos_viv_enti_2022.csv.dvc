@@ -1,0 +1,5 @@
+outs:
+- md5: f9d2c08d9c1b80def3637cc8592ed89e
+  size: 13981435
+  hash: md5
+  path: conjunto_de_datos_viv_enti_2022.csv
